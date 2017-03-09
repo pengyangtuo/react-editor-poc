@@ -1,0 +1,1 @@
+export const CREATE_NEW_ELEMENT = 'CREATE_NEW_ELEMENT';
