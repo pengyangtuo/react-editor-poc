@@ -6,3 +6,10 @@ export function createElement(element) {
     element
   };
 }
+
+export function updateElementContent(element) {
+  return {
+    type: types.UPDATE_ELEMENT_CONTENT,
+    element
+  };
+}

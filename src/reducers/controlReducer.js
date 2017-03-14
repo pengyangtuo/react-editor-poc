@@ -8,6 +8,14 @@ export default function controlReducer(state = initialState.elements, action) {
         ...state,
         action.element
       ];
+    case types.UPDATE_ELEMENT_CONTENT:
+      return state.map(element => {
+        if(element.id == action.element.id){
+          return action.element;
+        }else{
+          return element;
+        }
+      });
     default:
       return state;
   }
