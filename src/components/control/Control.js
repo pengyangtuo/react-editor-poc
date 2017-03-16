@@ -40,7 +40,8 @@ class Control extends React.Component {
           content="<p>This is the initial content of the editor</p>"
           config={{
             plugins: 'link image code',
-            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+            toolbar: 'fontselect | undo redo | bold italic | alignleft aligncenter alignright | code',
+            font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n'
           }}
           onChange={this.handleEditorChange}
         />

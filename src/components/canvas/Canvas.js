@@ -13,7 +13,7 @@ class Canvas extends React.Component {
 
   renderElements(elements) {
     return elements.map((e, idx) => {
-      return (<Element key={idx} content={e.content}>{e.title}</Element>);
+      return (<Element key={idx} element={e}>{e.title}</Element>);
     });
   }
 

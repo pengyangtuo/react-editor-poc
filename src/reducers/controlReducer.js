@@ -9,6 +9,7 @@ export default function controlReducer(state = initialState.elements, action) {
         action.element
       ];
     case types.UPDATE_ELEMENT_CONTENT:
+      console.log('reducer', action.element);
       return state.map(element => {
         if(element.id == action.element.id){
           return action.element;
