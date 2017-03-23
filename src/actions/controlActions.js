@@ -13,3 +13,10 @@ export function updateElementContent(element) {
     element
   };
 }
+
+export function updateSelectedElement(element) {
+  return {
+    type: types.UPDATE_SELECTED_ELEMENT,
+    element
+  }
+}

@@ -24,12 +24,14 @@ class Canvas extends React.Component {
     };
 
     return (
-      <Frame style={style}>
-        <h1>Inside iframe</h1>
-        <div>
-          {this.renderElements(this.props.elements)}
-        </div>
-      </Frame>
+      <div className="lce-canvas">
+        <Frame className="lce-canvas__frame" style={style}>
+          <h1>Inside iframe</h1>
+          <div>
+            {this.renderElements(this.props.elements)}
+          </div>
+        </Frame>
+      </div>
     );
   }
 }

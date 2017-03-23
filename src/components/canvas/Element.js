@@ -12,7 +12,7 @@ class Element extends React.Component {
     this.createInteractElement = this.createInteractElement.bind(this);
     this.renderContent = this.renderContent.bind(this);
     this.onMoveEnd = this.onMoveEnd.bind(this);
-    this.selectElement = this.selectElement(this);
+    this.selectElement = this.selectElement.bind(this);
   }
 
   onMoveEnd(event) {
@@ -40,7 +40,7 @@ class Element extends React.Component {
     console.log("creating interact", node);
     this.interactElement = interactjs(node)
       .draggable({
-        enabled: false,
+        //enabled: false,
         // enable inertial throwing
         inertia: true,
         // keep the element within the area of it's parent
@@ -98,7 +98,8 @@ class Element extends React.Component {
   }
 
   selectElement(e) {
-    console.log('selecting ', this.props.element);
+    e.preventDefault();
+    this.props.actions.updateSelectedElement(this.props.element);
   }
 
   renderContent() {

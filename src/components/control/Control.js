@@ -3,7 +3,8 @@ import Frame from 'react-frame-component';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as controlActions from '../../actions/controlActions';
-import TinyMCE from 'react-tinymce';
+//import TinyMCE from 'react-tinymce';
+import TinyMCEInput from 'react-tinymce-input';
 
 class Control extends React.Component {
   constructor(props, context){
@@ -23,22 +24,20 @@ class Control extends React.Component {
     this.props.actions.createElement(newElement);
   }
 
-  handleEditorChange(e) {
-    this.props.actions.updateElementContent({
-      id: 1,
-      title: 'element-1',
-      content: e.target.getContent()
+  handleEditorChange(newValue) {
+    const newElement = Object.assign({}, this.props.currentElement, {
+      content: newValue
     });
-    console.log('Content was updated:', e.target.getContent());
+    this.props.actions.updateElementContent(newElement);
   }
 
   render() {
     return (
-      <div>
+      <div className="lce-control">
         <button onClick={this.createElement}>Add new element</button>
-        <TinyMCE
-          content="<p>This is the initial content of the editor</p>"
-          config={{
+        <TinyMCEInput
+          value={this.props.currentElement == null ? "Change me" : this.props.currentElement.content}
+          tinymceConfig={{
             plugins: 'link image code',
             toolbar: 'fontselect | undo redo | bold italic | alignleft aligncenter alignright | code',
             font_formats: 'Arial=arial,helvetica,sans-serif;Courier New=courier new,courier,monospace;AkrutiKndPadmini=Akpdmi-n'
@@ -52,12 +51,14 @@ class Control extends React.Component {
 
 Control.propTypes = {
   actions: PropTypes.object.isRequired,
-  elements: PropTypes.array.isRequired
+  elements: PropTypes.array.isRequired,
+  currentElement: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    elements: state.elements
+    elements: state.elements,
+    currentElement: state.currentElement
   };
 }
 
